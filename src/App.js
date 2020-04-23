@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import Filter from "./components/Filter"
+import NewContactForm from "./components/NewContactForm"
+import PhoneNumbers from "./components/PhoneNumbers" 
+import clientService from "./lib/client"
 
 function App() {
+  const [numbers, updateNumbers] = useState([])
+
+
+  useEffect(() => {
+    clientService.getNumbers().then((r) => {
+      updateNumbers(r)
+    })
+  }, [])
+
+  const addContact = (event, name, number) => {
+    clientService.createNumber(name, number)
+      .then((n) => {
+        const updatedNumbers = numbers.concat(n)
+        updateNumbers(updatedNumbers)
+      })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Phone Book</h1>
+      <Filter />
+      <NewContactForm handleSubmit={addContact} />
+      <PhoneNumbers numbers={numbers} />
     </div>
   );
 }
