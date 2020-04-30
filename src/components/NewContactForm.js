@@ -6,7 +6,6 @@ const NewContactForm = ({handleSubmit}) => {
     const [numberText, updateNumberText] = useState("")
 
     const handleTextChange = (event) => {
-        console.log(event.target.value)
         if (event.target.name === "name"){
             updateNameText(event.target.value)
         }

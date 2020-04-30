@@ -1,19 +1,9 @@
 {
   "numbers": [
     {
-      "id": 1,
-      "name": "Barry",
-      "phone_number": "0404455455"
-    },
-    {
-      "name": "awdawd",
-      "phone_number": "awdawd",
-      "id": 2
-    },
-    {
-      "name": "awdawd",
-      "phone_number": "awdawd",
-      "id": 3
+      "name": "Tony",
+      "phone_number": "777",
+      "id": 1
     }
   ]
 }
